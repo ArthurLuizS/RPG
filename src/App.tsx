@@ -1,11 +1,48 @@
 import * as C from './app.styles'
 import {Character} from './components/Character'
+import { useCharacter } from './hooks/useCharacter'
+import {useEffect} from 'react'
+
+
 
 const App = () =>{
+
+  const char = useCharacter();
+
+  useEffect(()=>{
+    window.addEventListener('keydown', handlekeydown);
+  }, []);
+
+  const handlekeydown = (e: KeyboardEvent) => {
+
+    switch(e.code){
+      case 'KeyA':
+      case 'ArrowLeft':
+        char.moveLeft();
+
+      break;
+      case 'KeyD':
+      case 'ArrowRight':
+        char.moveRight();
+
+      break;
+      case 'KeyW':
+      case 'ArrowUp':
+        char.moveUp();
+
+      break;
+      case 'KeyS':
+      case 'ArrowDown':
+        char.moveDown();
+
+      break;
+    }
+
+  };
   return(
     <C.Container>
      <C.Map>
-       <Character x={5} y={0} />
+       <Character x={char.x} y={char.y} />
      </C.Map>
     </C.Container>
   );
