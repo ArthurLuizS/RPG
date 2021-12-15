@@ -8,7 +8,8 @@ import {useEffect} from 'react'
 const App = () =>{
 
   const char = useCharacter();
-
+  
+  /* monitoramento do teclado */
   useEffect(()=>{
     window.addEventListener('keydown', handlekeydown);
   }, []);
@@ -42,7 +43,7 @@ const App = () =>{
   return(
     <C.Container>
      <C.Map>
-       <Character x={char.x} y={char.y} />
+       <Character x={char.x} y={char.y} side={char.side} />
      </C.Map>
     </C.Container>
   );
