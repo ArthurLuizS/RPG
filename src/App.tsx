@@ -7,7 +7,7 @@ import {useEffect} from 'react'
 
 const App = () =>{
 
-  const char = useCharacter();
+  const char = useCharacter('Arthur');
   
   /* monitoramento do teclado */
   useEffect(()=>{
@@ -35,7 +35,7 @@ const App = () =>{
       case 'KeyS':
       case 'ArrowDown':
         char.moveDown();
-
+        
       break;
     }
 
@@ -43,7 +43,9 @@ const App = () =>{
   return(
     <C.Container>
      <C.Map>
-       <Character x={char.x} y={char.y} side={char.side} />
+       <Character x={char.x} y={char.y} side={char.side}  name={char.name}/>
+       
+       
      </C.Map>
     </C.Container>
   );
